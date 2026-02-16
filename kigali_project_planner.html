@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kigali Website Project Planner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .tab:hover {
+            background: #e0e0e0;
+        }
+
+        .tab.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .progress-bar {
+            background: #f0f0f0;
+            height: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            height: 100%;
+            transition: width 0.5s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        .section h2 {
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 12px;
+            margin: 8px 0;
+            background: white;
+            border-radius: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .checklist-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .checklist-item.completed {
+            opacity: 0.7;
+        }
+
+        .checklist-item.completed .item-text {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #667eea;
+            border-radius: 6px;
+            margin-right: 12px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .checklist-item.completed .checkbox {
+            background: #667eea;
+        }
+
+        .checkbox::after {
+            content: '✓';
+            color: white;
+            font-size: 16px;
+            display: none;
+        }
+
+        .checklist-item.completed .checkbox::after {
+            display: block;
+        }
+
+        .item-text {
+            flex: 1;
+            line-height: 1.6;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #667eea;
+            color: white;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-left: 8px;
+        }
+
+        .badge.critical {
+            background: #ef4444;
+        }
+
+        .badge.important {
+            background: #f59e0b;
+        }
+
+        .structure-visual {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+
+        .folder { color: #f59e0b; font-weight: bold; }
+        .file { color: #667eea; }
+        .comment { color: #888; }
+
+        .tip {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .tip strong {
+            color: #f59e0b;
+        }
+
+        .git-commands {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .git-commands .command {
+            color: #a5f3fc;
+            margin: 8px 0;
+        }
+
+        .git-commands .comment {
+            color: #94a3b8;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        th {
+            background: #f3f4f6;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 8px;
+        }
+
+        .reset-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .reset-btn:hover {
+            background: #dc2626;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🇷🇼 Kigali Website Project Planner</h1>
+        <p class="subtitle">Track your HTML/CSS assignment progress</p>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill">0%</div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('overview')">📋 Overview</button>
+            <button class="tab" onclick="switchTab('html')">📄 HTML Tasks</button>
+            <button class="tab" onclick="switchTab('css')">🎨 CSS Tasks</button>
+            <button class="tab" onclick="switchTab('git')">📦 Git Tasks</button>
+            <button class="tab" onclick="switchTab('structure')">🗂️ File Structure</button>
+            <button class="tab" onclick="switchTab('tips')">💡 Tips & Resources</button>
+        </div>
+
+        <!-- OVERVIEW TAB -->
+        <div id="overview" class="tab-content active">
+            <div class="section">
+                <h2><span class="emoji">🎯</span> Project Stats</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number" id="totalTasks">0</span>
+                        <div class="stat-label">Total Tasks</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="completedTasks">0</span>
+                        <div class="stat-label">Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="remainingTasks">0</span>
+                        <div class="stat-label">Remaining</div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="progressPercent">0%</span>
+                        <div class="stat-label">Progress</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><span class="emoji">📝</span> Assignment Summary</h2>
+                <table>
+                    <tr>
+                        <th>Requirement</th>
+                        <th>Details</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Pages Required</strong></td>
+                        <td>5 total (1 Home + 4 Destination pages)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Images</strong></td>
+                        <td>Minimum 10 images across all pages</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lists</strong></td>
+                        <td>1 ordered list + 1 unordered list</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Media</strong></td>
+                        <td>1 table, 1 video, 1 audio, 1 embedded element</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CSS Files</strong></td>
+                        <td>1 per HTML page (5 total)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Git Commits</strong></td>
+                        <td>Minimum 5 meaningful commits</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- HTML TASKS TAB -->
+        <div id="html" class="tab-content">
+            <div class="section">
+                <h2><span class="emoji">🏠</span> Page Structure</h2>
+                <ul class="checklist" id="htmlStructure">
+                    <li class="checklist-item" data-task="html-1">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Create index.html (Home page) <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="html-2">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Create destination1.html (e.g., Kigali Convention Centre)</div>
+                    </li>
+                    <li class="checklist-item" data-task="html-3">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Create destination2.html (e.g., Inema Arts Center)</div>
+                    </li>
+                    <li class="checklist-item" data-task="html-4">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Create destination3.html (e.g., Heaven Restaurant)</div>
+                    </li>
+                    <li class="checklist-item" data-task="html-5">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Create destination4.html (e.g., Kigali Genocide Memorial)</div>
+                    </li>
+                    <li class="checklist-item" data-task="html-6">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Add navigation links on Home page to all destination pages <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="html-7">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Add "Back to Home" link on each destination page <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><span class="emoji">🖼️</span> Images & Media</h2>
+                <ul class="checklist" id="htmlMedia">
+                    <li class="checklist-item" data-task="html-8">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Add at least 10 images total across all pages (2 per page minimum) <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="html-9">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Add 1 video element (can be embedded YouTube or local video) <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="html-10">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Add 1 audio element (can be local audio file or embedded) <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="html-11">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Add 1 embedded element (Google Map iframe recommended) <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="html-12">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Add alt attributes to all images</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><span class="emoji">📋</span> Lists & Tables</h2>
+                <ul class="checklist" id="htmlLists">
+                    <li class="checklist-item" data-task="html-13">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Add 1 ordered list &lt;ol&gt; (e.g., top 5 attractions, step-by-step directions) <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="html-14">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Add 1 unordered list &lt;ul&gt; (e.g., features, amenities, menu items) <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="html-15">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Add 1 table (e.g., opening hours, prices, comparison) <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><span class="emoji">🔗</span> Links & Navigation</h2>
+                <ul class="checklist" id="htmlLinks">
+                    <li class="checklist-item" data-task="html-16">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Add internal links (between your pages) <span class="badge important">IMPORTANT</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="html-17">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Add external links (to relevant websites, maps, booking sites) <span class="badge important">IMPORTANT</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="html-18">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Test all links to ensure they work correctly</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><span class="emoji">✅</span> HTML Best Practices</h2>
+                <ul class="checklist" id="htmlBestPractices">
+                    <li class="checklist-item" data-task="html-19">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Use semantic HTML tags (header, nav, main, section, article, footer)</div>
+                    </li>
+                    <li class="checklist-item" data-task="html-20">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Include proper DOCTYPE and meta tags on all pages</div>
+                    </li>
+                    <li class="checklist-item" data-task="html-21">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Use proper heading hierarchy (h1 → h2 → h3)</div>
+                    </li>
+                    <li class="checklist-item" data-task="html-22">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Indent code properly for readability</div>
+                    </li>
+                    <li class="checklist-item" data-task="html-23">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Validate HTML using W3C Validator</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CSS TASKS TAB -->
+        <div id="css" class="tab-content">
+            <div class="section">
+                <h2><span class="emoji">📁</span> CSS File Setup</h2>
+                <ul class="checklist" id="cssSetup">
+                    <li class="checklist-item" data-task="css-1">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Create home.css for index.html <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="css-2">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Create destination1.css for destination1.html <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="css-3">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Create destination2.css for destination2.html <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="css-4">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Create destination3.css for destination3.html <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="css-5">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Create destination4.css for destination4.html <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="css-6">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Link each CSS file to its corresponding HTML page using &lt;link&gt; tag <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><span class="emoji">🎨</span> CSS Requirements (Per File)</h2>
+                <ul class="checklist" id="cssRequirements">
+                    <li class="checklist-item" data-task="css-7">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Add at least 3 CSS classes in each CSS file <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="css-8">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Use at least 4 different selectors in each CSS file (element, class, ID, descendant) <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="css-9">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Style all images (size, borders, margins, alignment) <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><span class="emoji">🖌️</span> Styling Suggestions</h2>
+                <ul class="checklist" id="cssStyling">
+                    <li class="checklist-item" data-task="css-10">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Add color scheme (consistent colors across pages)</div>
+                    </li>
+                    <li class="checklist-item" data-task="css-11">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Style navigation menu (could use flexbox or inline-block)</div>
+                    </li>
+                    <li class="checklist-item" data-task="css-12">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Add hover effects on links and buttons</div>
+                    </li>
+                    <li class="checklist-item" data-task="css-13">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Style the table (borders, padding, alternating row colors)</div>
+                    </li>
+                    <li class="checklist-item" data-task="css-14">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Add padding and margins for proper spacing</div>
+                    </li>
+                    <li class="checklist-item" data-task="css-15">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Choose readable fonts (font-family, font-size)</div>
+                    </li>
+                    <li class="checklist-item" data-task="css-16">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Add a header and footer style consistent across pages</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- GIT TASKS TAB -->
+        <div id="git" class="tab-content">
+            <div class="section">
+                <h2><span class="emoji">📦</span> GitHub Repository Setup</h2>
+                <ul class="checklist" id="gitSetup">
+                    <li class="checklist-item" data-task="git-1">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Create a new public repository on GitHub <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="git-2">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Clone repository to your local machine</div>
+                    </li>
+                    <li class="checklist-item" data-task="git-3">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Create README.md file <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                </ul>
+
+                <div class="tip">
+                    <strong>💡 Quick Start Commands:</strong>
+                    <div class="git-commands">
+<span class="comment"># Create and navigate to your project folder</span>
+<span class="command">mkdir kigali-website</span>
+<span class="command">cd kigali-website</span>
+
+<span class="comment"># Initialize git repository</span>
+<span class="command">git init</span>
+
+<span class="comment"># Connect to your GitHub repository</span>
+<span class="command">git remote add origin YOUR_REPO_URL</span>
+
+<span class="comment"># Create your first file</span>
+<span class="command">echo "# Kigali Website" >> README.md</span>
+
+<span class="comment"># Make your first commit</span>
+<span class="command">git add README.md</span>
+<span class="command">git commit -m "Initial commit: Add README"</span>
+<span class="command">git push -u origin main</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><span class="emoji">💾</span> Commit Strategy (5+ Commits Required)</h2>
+                <ul class="checklist" id="gitCommits">
+                    <li class="checklist-item" data-task="git-4">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Commit 1: Initial commit with README.md <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="git-5">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Commit 2: Add HTML structure for all pages <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="git-6">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Commit 3: Add images and media elements <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="git-7">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Commit 4: Add CSS styling for all pages <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="git-8">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Commit 5: Final refinements and testing <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="git-9">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Additional commits for bug fixes or improvements (optional but recommended)</div>
+                    </li>
+                </ul>
+
+                <div class="tip">
+                    <strong>💡 Commit Best Practices:</strong>
+                    <div class="git-commands">
+<span class="comment"># Add all changed files</span>
+<span class="command">git add .</span>
+
+<span class="comment"># Write meaningful commit messages</span>
+<span class="command">git commit -m "Add navigation menu to all pages"</span>
+<span class="command">git commit -m "Style table with alternating row colors"</span>
+<span class="command">git commit -m "Add Google Maps embed to location pages"</span>
+
+<span class="comment"># Push to GitHub</span>
+<span class="command">git push origin main</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><span class="emoji">📄</span> README.md Requirements</h2>
+                <ul class="checklist" id="gitReadme">
+                    <li class="checklist-item" data-task="git-10">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Add project title <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="git-11">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Add short project description <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="git-12">
+                        <div class="checkbox"></div>
+                        <div class="item-text">List all HTML pages included <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="git-13">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Add brief explanation of what the project demonstrates <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                    <li class="checklist-item" data-task="git-14">
+                        <div class="checkbox"></div>
+                        <div class="item-text">Include your name and course/student ID <span class="badge critical">CRITICAL</span></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FILE STRUCTURE TAB -->
+        <div id="structure" class="tab-content">
+            <div class="section">
+                <h2><span class="emoji">🗂️</span> Recommended Project Structure</h2>
+                <div class="structure-visual">
+<span class="folder">kigali-website/</span>
+├── <span class="file">index.html</span>               <span class="comment">← Home page</span>
+├── <span class="file">destination1.html</span>        <span class="comment">← e.g., Kigali Convention Centre</span>
+├── <span class="file">destination2.html</span>        <span class="comment">← e.g., Inema Arts Center</span>
+├── <span class="file">destination3.html</span>        <span class="comment">← e.g., Heaven Restaurant</span>
+├── <span class="file">destination4.html</span>        <span class="comment">← e.g., Genocide Memorial</span>
+├── <span class="file">README.md</span>                <span class="comment">← Project documentation</span>
+├── <span class="folder">css/</span>
+│   ├── <span class="file">home.css</span>
+│   ├── <span class="file">destination1.css</span>
+│   ├── <span class="file">destination2.css</span>
+│   ├── <span class="file">destination3.css</span>
+│   └── <span class="file">destination4.css</span>
+├── <span class="folder">images/</span>
+│   ├── <span class="file">logo.png</span>
+│   ├── <span class="file">kcc.jpg</span>
+│   ├── <span class="file">inema.jpg</span>
+│   ├── <span class="file">heaven.jpg</span>
+│   └── <span class="comment">... (more images)</span>
+├── <span class="folder">media/</span>              <span class="comment">← Optional folder for audio/video</span>
+│   ├── <span class="file">tour-video.mp4</span>
+│   └── <span class="file">background-music.mp3</span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><span class="emoji">📝</span> Sample README.md Template</h2>
+                <div class="structure-visual">
+# Kigali Tourism Website
+
+## Description
+A comprehensive guide to activities and dining experiences in Kigali, Rwanda.
+This website showcases popular tourist destinations, restaurants, and cultural
+attractions in Rwanda's capital city.
+
+## Pages Included
+- **index.html** - Home page with overview and navigation
+- **destination1.html** - Kigali Convention Centre
+- **destination2.html** - Inema Arts Center
+- **destination3.html** - Heaven Restaurant
+- **destination4.html** - Kigali Genocide Memorial
+
+## Features Demonstrated
+- Semantic HTML5 structure
+- Responsive CSS styling with custom classes
+- Integration of images, video, and audio elements
+- Embedded Google Maps for locations
+- Styled tables for pricing/hours information
+- Internal and external navigation links
+- Organized and validated code structure
+
+## Technologies Used
+- HTML5
+- CSS3
+
+## Author
+[Your Name]
+[Course Name/Student ID]
+[Date]
+                </div>
+            </div>
+        </div>
+
+        <!-- TIPS TAB -->
+        <div id="tips" class="tab-content">
+            <div class="section">
+                <h2><span class="emoji">💡</span> Kigali Destination Ideas</h2>
+                <table>
+                    <tr>
+                        <th>Category</th>
+                        <th>Suggestions</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Cultural Sites</strong></td>
+                        <td>Kigali Genocide Memorial, Inema Arts Center, Niyo Cultural Center, King's Palace Museum</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Modern Attractions</strong></td>
+                        <td>Kigali Convention Centre, Kigali Heights, Kigali City Tower</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Restaurants</strong></td>
+                        <td>Heaven Restaurant, Pili Pili, Khana Khazana, Repub Lounge</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nature & Parks</strong></td>
+                        <td>Nyandungu Eco-Park, Mount Kigali, Nyamirambo Women's Center</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Shopping</strong></td>
+                        <td>Kimironko Market, Caplaki Craft Village, Union Trade Centre</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2><span class="emoji">🔍</span> Where to Find Content</h2>
+                <ul class="checklist" id="contentSources">
+                    <li class="checklist-item" data-task="tip-1">
+                        <div class="checkbox"></div>
+                        <div class="item-text"><strong>Images:</strong> Unsplash, Pexels, Pixabay (free stock photos), or take your own photos</div>
+                    </li>
+                    <li class="checklist-item" data-task="tip-2">
+                        <div class="checkbox"></div>
+                        <div class="item-text"><strong>Videos:</strong> YouTube (embed code), Vimeo, or record your own</div>
+                    </li>
+                    <li class="checklist-item" data-task="tip-3">
+                        <div class="checkbox"></div>
+                        <div class="item-text"><strong>Audio:</strong> Free music from Incompetech, or record ambient sounds</div>
+                    </li>
+                    <li class="checklist-item" data-task="tip-4">
+                        <div class="checkbox"></div>
+                        <div class="item-text"><strong>Maps:</strong> Google Maps (use share → embed map feature)</div>
+                    </li>
+                    <li class="checklist-item" data-task="tip-5">
+                        <div class="checkbox"></div>
+                        <div class="item-text"><strong>Information:</strong> Visit Rwanda website, TripAdvisor, local tourism sites</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2><span class="emoji">🎨</span> CSS Quick Reference</h2>
+                <table>
+                    <tr>
+                        <th>Selector Type</th>
+                        <th>Example</th>
+                        <th>Use Case</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Element</strong></td>
+                        <td>h1 { color: blue; }</td>
+                        <td>Style all h1 elements</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Class</strong></td>
+                        <td>.header { ... }</td>
+                        <td>Reusable styles</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ID</strong></td>
+                        <td>#main { ... }</td>
+                        <td>Unique element</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Descendant</strong></td>
+                        <td>nav a { ... }</td>
+                        <td>Links inside nav</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2><span class="emoji">📚</span> Learning Resources</h2>
+                <ul class="checklist" id="resources">
+                    <li class="checklist-item" data-task="resource-1">
+                        <div class="checkbox"></div>
+                        <div class="item-text"><strong>W3Schools HTML Tutorial:</strong> https://www.w3schools.com/html/</div>
+                    </li>
+                    <li class="checklist-item" data-task="resource-2">
+                        <div class="checkbox"></div>
+                        <div class="item-text"><strong>W3Schools CSS Tutorial:</strong> https://www.w3schools.com/css/</div>
+                    </li>
+                    <li class="checklist-item" data-task="resource-3">
+                        <div class="checkbox"></div>
+                        <div class="item-text"><strong>HTML Validator:</strong> https://validator.w3.org/</div>
+                    </li>
+                    <li class="checklist-item" data-task="resource-4">
+                        <div class="checkbox"></div>
+                        <div class="item-text"><strong>CSS Validator:</strong> https://jigsaw.w3.org/css-validator/</div>
+                    </li>
+                    <li class="checklist-item" data-task="resource-5">
+                        <div class="checkbox"></div>
+                        <div class="item-text"><strong>Git Tutorial:</strong> https://www.w3schools.com/git/</div>
+                    </li>
+                    <li class="checklist-item" data-task="resource-6">
+                        <div class="checkbox"></div>
+                        <div class="item-text"><strong>Markdown Guide:</strong> https://www.markdownguide.org/</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tip">
+                <strong>🚀 Pro Tips:</strong>
+                <ul style="margin-top: 10px; margin-left: 20px;">
+                    <li>Start with HTML structure, then add CSS styling</li>
+                    <li>Test your pages in a browser frequently</li>
+                    <li>Use consistent naming conventions (lowercase, hyphens)</li>
+                    <li>Comment your code for better organization</li>
+                    <li>Make meaningful git commits as you work</li>
+                    <li>Ask for help if you're stuck on something!</li>
+                </ul>
+            </div>
+        </div>
+
+        <button class="reset-btn" onclick="resetProgress()">🔄 Reset All Progress</button>
+    </div>
+
+    <script>
+        // Load saved progress
+        let progress = JSON.parse(localStorage.getItem('kigaliProjectProgress') || '{}');
+
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function updateProgress() {
+            const allItems = document.querySelectorAll('.checklist-item[data-task]');
+            const completed = document.querySelectorAll('.checklist-item.completed[data-task]');
+            
+            const total = allItems.length;
+            const done = completed.length;
+            const remaining = total - done;
+            const percent = total > 0 ? Math.round((done / total) * 100) : 0;
+
+            document.getElementById('totalTasks').textContent = total;
+            document.getElementById('completedTasks').textContent = done;
+            document.getElementById('remainingTasks').textContent = remaining;
+            document.getElementById('progressPercent').textContent = percent + '%';
+            
+            const progressFill = document.getElementById('progressFill');
+            progressFill.style.width = percent + '%';
+            progressFill.textContent = percent + '%';
+
+            // Save progress
+            localStorage.setItem('kigaliProjectProgress', JSON.stringify(progress));
+        }
+
+        function toggleTask(taskId) {
+            const item = document.querySelector(`[data-task="${taskId}"]`);
+            if (progress[taskId]) {
+                delete progress[taskId];
+                item.classList.remove('completed');
+            } else {
+                progress[taskId] = true;
+                item.classList.add('completed');
+            }
+            updateProgress();
+        }
+
+        function resetProgress() {
+            if (confirm('Are you sure you want to reset all progress? This cannot be undone.')) {
+                progress = {};
+                localStorage.removeItem('kigaliProjectProgress');
+                document.querySelectorAll('.checklist-item').forEach(item => {
+                    item.classList.remove('completed');
+                });
+                updateProgress();
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Restore saved progress
+            Object.keys(progress).forEach(taskId => {
+                const item = document.querySelector(`[data-task="${taskId}"]`);
+                if (item) {
+                    item.classList.add('completed');
+                }
+            });
+
+            // Add click handlers
+            document.querySelectorAll('.checklist-item[data-task]').forEach(item => {
+                item.addEventListener('click', () => {
+                    toggleTask(item.dataset.task);
+                });
+            });
+
+            updateProgress();
+        });
+    </script>
+</body>
+</html>

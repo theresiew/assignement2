@@ -1,0 +1,500 @@
+/* CSS for destination2.html (Inema Arts Center) */
+
+/* ========== RESET ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(to bottom, #fff 0%, #f0f0f0 100%);
+}
+
+/* ========== CONTAINER ========== */
+.container {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ========== HEADER ========== */
+header {
+    background: linear-gradient(45deg, #FF6B6B, #FFD93D, #6BCF7F, #4ECDC4);
+    background-size: 300% 300%;
+    animation: gradientShift 8s ease infinite;
+    color: white;
+    padding: 55px 0;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+    font-weight: bold;
+}
+
+.tagline {
+    font-size: 1.3em;
+    font-weight: 300;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* ========== NAVIGATION ========== */
+nav {
+    background-color: #2d3436;
+    padding: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.nav-menu li {
+    margin: 0;
+}
+
+.nav-menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 16px 24px;
+    transition: all 0.3s;
+    font-size: 0.98em;
+    font-weight: 500;
+}
+
+.nav-menu a:hover {
+    background-color: #FF6B6B;
+    transform: translateY(-2px);
+}
+
+/* ========== SECTIONS ========== */
+section {
+    padding: 55px 0;
+    background-color: white;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+section h2 {
+    font-size: 2.5em;
+    color: #FF6B6B;
+    margin-bottom: 28px;
+    text-align: center;
+    border-bottom: 4px solid #FFD93D;
+    display: inline-block;
+    padding-bottom: 8px;
+}
+
+.container > h2 {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+section h3 {
+    font-size: 1.7em;
+    color: #2d3436;
+    margin: 22px 0 15px;
+}
+
+section p {
+    margin-bottom: 20px;
+    font-size: 1.08em;
+    color: #636e72;
+    line-height: 1.8;
+}
+
+/* ========== IMAGES ========== */
+.main-image {
+    width: 100%;
+    max-width: 950px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    margin: 25px auto;
+    display: block;
+    border: 5px solid #FFD93D;
+}
+
+.content-image {
+    width: 100%;
+    max-width: 750px;
+    height: auto;
+    border-radius: 10px;
+    margin: 30px auto;
+    display: block;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* ========== AUDIO PLAYER ========== */
+.audio-player {
+    width: 100%;
+    max-width: 600px;
+    margin: 25px auto;
+    display: block;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.audio-note {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+    margin-top: 12px;
+    font-size: 0.95em;
+}
+
+/* ========== UNORDERED LIST ========== */
+.experience-list {
+    max-width: 850px;
+    margin: 30px auto;
+    list-style: none;
+}
+
+.experience-list li {
+    padding: 15px 15px 15px 50px;
+    margin: 15px 0;
+    background-color: #fff9e6;
+    border-left: 5px solid #FFD93D;
+    border-radius: 5px;
+    position: relative;
+    font-size: 1.05em;
+    color: #2d3436;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.experience-list li::before {
+    content: "🎨";
+    position: absolute;
+    left: 15px;
+    font-size: 1.5em;
+}
+
+.experience-list strong {
+    color: #FF6B6B;
+}
+
+/* ========== ARTIST GRID ========== */
+.artist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 35px;
+}
+
+.artist-card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 3px solid transparent;
+}
+
+.artist-card:hover {
+    transform: translateY(-10px) rotate(1deg);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    border-color: #FF6B6B;
+}
+
+.artist-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.artist-card h3 {
+    padding: 18px 18px 8px;
+    font-size: 1.4em;
+    color: #FF6B6B;
+}
+
+.artist-card p {
+    padding: 0 18px 20px;
+    color: #636e72;
+    font-size: 1em;
+}
+
+/* ========== TABLE STYLES ========== */
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.schedule-table thead {
+    background: linear-gradient(135deg, #FF6B6B, #FFD93D);
+    color: white;
+}
+
+.schedule-table th {
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.08em;
+}
+
+.schedule-table td {
+    padding: 15px 16px;
+    border-bottom: 1px solid #dfe6e9;
+    color: #2d3436;
+}
+
+.schedule-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.schedule-table tbody tr:hover {
+    background-color: #fff9e6;
+}
+
+.note {
+    text-align: center;
+    font-style: italic;
+    color: #636e72;
+    margin-top: 15px;
+    font-size: 0.95em;
+}
+
+/* ========== ART GALLERY ========== */
+.art-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 35px;
+}
+
+.art-image {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    transition: transform 0.4s, box-shadow 0.3s;
+    border: 4px solid #fff;
+}
+
+.art-image:hover {
+    transform: scale(1.08) rotate(-2deg);
+    box-shadow: 0 12px 35px rgba(255, 107, 107, 0.4);
+}
+
+/* ========== ORDERED LIST (WORKSHOPS) ========== */
+.workshop-list {
+    max-width: 900px;
+    margin: 30px auto;
+    counter-reset: workshop;
+    list-style: none;
+}
+
+.workshop-list li {
+    margin: 22px 0;
+    padding-left: 60px;
+    position: relative;
+    font-size: 1.08em;
+    line-height: 1.8;
+    color: #2d3436;
+}
+
+.workshop-list li::before {
+    content: counter(workshop);
+    counter-increment: workshop;
+    position: absolute;
+    left: 0;
+    top: -2px;
+    background: linear-gradient(135deg, #FF6B6B, #FFD93D);
+    color: white;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.workshop-list strong {
+    color: #FF6B6B;
+    font-size: 1.1em;
+}
+
+.workshop-note {
+    text-align: center;
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #fff9e6;
+    border-radius: 8px;
+    color: #636e72;
+    font-style: italic;
+}
+
+/* ========== EVENTS LIST ========== */
+.events-list {
+    max-width: 800px;
+    margin: 25px auto;
+    list-style: none;
+}
+
+.events-list li {
+    padding: 15px 15px 15px 45px;
+    margin: 12px 0;
+    background-color: #f8f9fa;
+    border-left: 4px solid #6BCF7F;
+    border-radius: 5px;
+    position: relative;
+    font-size: 1.05em;
+}
+
+.events-list li::before {
+    content: "📅";
+    position: absolute;
+    left: 12px;
+    font-size: 1.4em;
+}
+
+/* ========== MAP ========== */
+.map-wrapper {
+    margin: 30px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    border: 3px solid #FFD93D;
+}
+
+.location-map {
+    display: block;
+}
+
+/* ========== CONTACT GRID ========== */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.contact-box {
+    background: linear-gradient(135deg, #FF6B6B, #FFD93D);
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+.contact-box:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+.contact-box h3 {
+    color: white;
+    margin-bottom: 12px;
+    font-size: 1.5em;
+}
+
+.contact-box p {
+    color: rgba(255,255,255,0.95);
+    font-size: 1.05em;
+}
+
+.contact-box a {
+    color: white;
+    text-decoration: underline;
+}
+
+/* ========== TIPS LIST ========== */
+.tips-list {
+    max-width: 800px;
+    margin: 25px auto;
+    list-style: none;
+}
+
+.tips-list li {
+    padding: 14px 14px 14px 48px;
+    margin: 12px 0;
+    background-color: #e8f5e9;
+    border-left: 4px solid #6BCF7F;
+    border-radius: 5px;
+    position: relative;
+    font-size: 1.05em;
+}
+
+.tips-list li::before {
+    content: "💡";
+    position: absolute;
+    left: 12px;
+    font-size: 1.4em;
+}
+
+/* ========== FOOTER ========== */
+footer {
+    background: linear-gradient(135deg, #2d3436, #636e72);
+    color: white;
+    text-align: center;
+    padding: 28px 0;
+    margin-top: 30px;
+    border-radius: 10px 10px 0 0;
+}
+
+.footer-link {
+    color: #FFD93D;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.footer-link:hover {
+    color: #FF6B6B;
+}
+
+footer p {
+    margin: 8px 0;
+    opacity: 0.92;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2em;
+    }
+    
+    .nav-menu {
+        flex-direction: column;
+    }
+    
+    section h2 {
+        font-size: 2em;
+    }
+    
+    .artist-grid,
+    .art-gallery {
+        grid-template-columns: 1fr;
+    }
+}

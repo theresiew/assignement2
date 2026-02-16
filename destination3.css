@@ -1,0 +1,509 @@
+/* CSS for destination3.html (Heaven Restaurant) */
+
+/* ========== RESET ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    line-height: 1.7;
+    color: #3d3d3d;
+    background-color: #fafafa;
+}
+
+/* ========== CONTAINER ========== */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 22px;
+}
+
+/* ========== HEADER ========== */
+header {
+    background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+header h1 {
+    font-size: 3.2em;
+    margin-bottom: 12px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    font-family: 'Georgia', serif;
+}
+
+.tagline {
+    font-size: 1.4em;
+    font-weight: 300;
+    font-style: italic;
+    opacity: 0.95;
+}
+
+/* ========== NAVIGATION ========== */
+nav {
+    background-color: #34495e;
+    padding: 0;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.nav-menu li {
+    margin: 0;
+}
+
+.nav-menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 17px 26px;
+    transition: all 0.3s ease;
+    font-size: 1em;
+    font-family: 'Arial', sans-serif;
+}
+
+.nav-menu a:hover {
+    background-color: #e67e22;
+}
+
+/* ========== SECTIONS ========== */
+section {
+    padding: 55px 0;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+section:nth-child(even) {
+    background-color: #fff8f0;
+}
+
+section h2 {
+    font-size: 2.6em;
+    color: #e67e22;
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: 3px solid #f39c12;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.container > h2 {
+    display: block;
+    text-align: center;
+}
+
+section h3 {
+    font-size: 1.8em;
+    color: #34495e;
+    margin: 25px 0 18px;
+}
+
+section p {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.85;
+}
+
+/* ========== IMAGES ========== */
+.hero-img {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    margin: 25px auto;
+    display: block;
+}
+
+.mission-img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.food-img {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    border-radius: 10px;
+    margin: 30px auto;
+    display: block;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* ========== MISSION SECTION ========== */
+.mission-content {
+    display: flex;
+    gap: 35px;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.mission-text {
+    flex: 1;
+}
+
+/* ========== UNORDERED LIST (MENU) ========== */
+.menu-list {
+    max-width: 850px;
+    margin: 25px auto;
+    list-style: none;
+}
+
+.menu-list li {
+    padding: 14px 14px 14px 55px;
+    margin: 15px 0;
+    background-color: #fff8f0;
+    border-left: 5px solid #e67e22;
+    border-radius: 6px;
+    position: relative;
+    font-size: 1.08em;
+    color: #3d3d3d;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.menu-list li::before {
+    content: "🍽️";
+    position: absolute;
+    left: 18px;
+    font-size: 1.4em;
+}
+
+.menu-list strong {
+    color: #e67e22;
+}
+
+/* ========== TABLE (PRICING) ========== */
+.price-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.price-table thead {
+    background: linear-gradient(135deg, #e67e22, #f39c12);
+    color: white;
+}
+
+.price-table th {
+    padding: 17px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.price-table td {
+    padding: 16px 17px;
+    border-bottom: 1px solid #e8e8e8;
+    color: #555;
+    font-size: 1.05em;
+}
+
+.price-table tbody tr:nth-child(even) {
+    background-color: #fff8f0;
+}
+
+.price-table tbody tr:hover {
+    background-color: #ffe8d0;
+}
+
+.note {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+    margin-top: 18px;
+    font-size: 0.98em;
+}
+
+/* ========== EXPERIENCE GRID ========== */
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+    margin-top: 35px;
+}
+
+.experience-card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.experience-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(230, 126, 34, 0.3);
+}
+
+.experience-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.experience-card h3 {
+    padding: 20px 20px 10px;
+    font-size: 1.5em;
+    color: #e67e22;
+}
+
+.experience-card p {
+    padding: 0 20px 22px;
+    color: #666;
+    font-size: 1.05em;
+}
+
+/* ========== HOURS TABLE ========== */
+.hours-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+    background-color: white;
+}
+
+.hours-table thead {
+    background-color: #34495e;
+    color: white;
+}
+
+.hours-table th {
+    padding: 15px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.05em;
+}
+
+.hours-table td {
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+    color: #555;
+}
+
+.hours-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.special-note {
+    background-color: #fff3cd;
+    border-left: 4px solid #f39c12;
+    padding: 18px;
+    margin-top: 25px;
+    border-radius: 5px;
+    color: #856404;
+}
+
+.special-note strong {
+    color: #e67e22;
+}
+
+/* ========== HOTEL FEATURES ========== */
+.hotel-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.feature-item {
+    background-color: #fff8f0;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    border: 2px solid #f39c12;
+}
+
+.feature-item h3 {
+    color: #e67e22;
+    margin-bottom: 12px;
+    font-size: 1.4em;
+}
+
+.feature-item p {
+    color: #666;
+    font-size: 1.05em;
+}
+
+/* ========== REVIEWS/BLOCKQUOTES ========== */
+.review {
+    background-color: #f9f9f9;
+    border-left: 5px solid #e67e22;
+    padding: 25px;
+    margin: 25px 0;
+    font-style: italic;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    color: #555;
+    font-size: 1.1em;
+    line-height: 1.7;
+}
+
+/* ========== MAP CONTAINER ========== */
+.map-container {
+    margin: 30px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.map-embed {
+    display: block;
+}
+
+/* ========== CONTACT INFO ========== */
+.contact-info {
+    max-width: 700px;
+    margin: 30px auto;
+    background-color: #fff8f0;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-left: 5px solid #e67e22;
+}
+
+.contact-info p {
+    padding: 10px 0;
+    font-size: 1.1em;
+    color: #3d3d3d;
+}
+
+.contact-info strong {
+    color: #e67e22;
+    display: inline-block;
+    width: 90px;
+}
+
+.contact-info a {
+    color: #e67e22;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-info a:hover {
+    color: #f39c12;
+    text-decoration: underline;
+}
+
+.reservation-note {
+    text-align: center;
+    margin-top: 25px;
+    padding: 18px;
+    background-color: #d4edda;
+    border-radius: 8px;
+    border-left: 4px solid #28a745;
+    color: #155724;
+    font-style: italic;
+}
+
+/* ========== ORDERED LIST (TIPS) ========== */
+.tips-list {
+    max-width: 900px;
+    margin: 30px auto;
+    counter-reset: tip-counter;
+    list-style: none;
+}
+
+.tips-list li {
+    margin: 22px 0;
+    padding-left: 65px;
+    position: relative;
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #3d3d3d;
+}
+
+.tips-list li::before {
+    content: counter(tip-counter);
+    counter-increment: tip-counter;
+    position: absolute;
+    left: 0;
+    top: -3px;
+    background: linear-gradient(135deg, #e67e22, #f39c12);
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.3em;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.tips-list strong {
+    color: #e67e22;
+    font-size: 1.08em;
+}
+
+/* ========== FOOTER ========== */
+footer {
+    background-color: #34495e;
+    color: white;
+    text-align: center;
+    padding: 28px 0;
+    margin-top: 20px;
+}
+
+.footer-link {
+    color: #f39c12;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.footer-link:hover {
+    color: #e67e22;
+}
+
+footer p {
+    margin: 10px 0;
+    opacity: 0.9;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.3em;
+    }
+    
+    .nav-menu {
+        flex-direction: column;
+    }
+    
+    section h2 {
+        font-size: 2em;
+    }
+    
+    .mission-content {
+        flex-direction: column;
+    }
+    
+    .experience-grid,
+    .hotel-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .tips-list li {
+        padding-left: 55px;
+    }
+}
