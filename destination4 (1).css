@@ -1,6 +1,4 @@
-/* CSS for destination4.html (Kigali Genocide Memorial) */
 
-/* ========== RESET ========== */
 * {
     margin: 0;
     padding: 0;
@@ -14,14 +12,13 @@ body {
     background-color: #f5f5f5;
 }
 
-/* ========== CONTAINER ========== */
 .container {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 25px;
 }
 
-/* ========== HEADER ========== */
+
 header {
     background: linear-gradient(to bottom, #4a5568 0%, #2d3748 100%);
     color: white;
@@ -44,7 +41,7 @@ header h1 {
     font-style: italic;
 }
 
-/* ========== NAVIGATION ========== */
+
 nav {
     background-color: #1a202c;
     padding: 0;
@@ -172,7 +169,6 @@ section p {
     color: #28a745;
 }
 
-/* ========== IMAGES ========== */
 .main-image {
     width: 100%;
     max-width: 950px;
@@ -193,7 +189,6 @@ section p {
     box-shadow: 0 5px 15px rgba(0,0,0,0.15);
 }
 
-/* ========== ORDERED LIST (EXHIBITIONS) ========== */
 .exhibition-list {
     max-width: 900px;
     margin: 30px auto;
@@ -234,7 +229,6 @@ section p {
     font-size: 1.08em;
 }
 
-/* ========== UNORDERED LIST (GARDEN FEATURES) ========== */
 .garden-features {
     max-width: 850px;
     margin: 25px auto;
@@ -345,7 +339,6 @@ section p {
     background-color: #edf2f7;
 }
 
-/* ========== GUIDELINES GRID ========== */
 .guidelines-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -396,7 +389,6 @@ section p {
     color: #dc3545;
 }
 
-/* ========== PHOTO GALLERY ========== */
 .photo-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -417,7 +409,6 @@ section p {
     transform: scale(1.05);
 }
 
-/* ========== TESTIMONY/BLOCKQUOTE ========== */
 .testimony {
     background-color: #f7fafc;
     border-left: 5px solid #4a5568;
@@ -431,7 +422,6 @@ section p {
     line-height: 1.8;
 }
 
-/* ========== MAP ========== */
 .map-wrapper {
     margin: 30px 0;
     border-radius: 8px;
@@ -443,7 +433,6 @@ section p {
     display: block;
 }
 
-/* ========== CONTACT DETAILS ========== */
 .contact-details {
     max-width: 700px;
     margin: 30px auto;
@@ -477,7 +466,6 @@ section p {
     text-decoration: underline;
 }
 
-/* ========== RESOURCE LISTS ========== */
 .resource-list,
 .reading-list {
     max-width: 800px;
@@ -520,7 +508,6 @@ section p {
     text-decoration: underline;
 }
 
-/* ========== REFLECTION/QUOTE ========== */
 .quote-emphasis {
     text-align: center;
     font-size: 1.5em;
@@ -533,7 +520,6 @@ section p {
     box-shadow: 0 3px 12px rgba(0,0,0,0.1);
 }
 
-/* ========== FOOTER ========== */
 footer {
     background-color: #1a202c;
     color: white;
@@ -558,7 +544,6 @@ footer p {
     opacity: 0.9;
 }
 
-/* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
     header h1 {
         font-size: 2.2em;
