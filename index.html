@@ -4,19 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discover Kigali - Your Guide to Rwanda's Capital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
     <header>
         <div class="container">
+            <p class="eyebrow">Rwanda's Capital City Guide</p>
             <h1>Discover Kigali</h1>
-            <p class="tagline">Experience the Heart of Rwanda</p>
+            <p class="tagline">Experience the heart of Rwanda through culture, design, cuisine, and meaningful history.</p>
         </div>
     </header>
 
     <nav>
-        <div class="container">
-            <ul class="nav-menu">
+        <div class="container nav-shell">
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+                <span class="menu-toggle-bar"></span>
+                <span class="menu-toggle-bar"></span>
+                <span class="menu-toggle-bar"></span>
+                <span class="menu-label">Menu</span>
+            </button>
+            <ul class="nav-menu" id="primary-navigation">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="destination1.html">Convention Centre</a></li>
                 <li><a href="destination2.html">Inema Arts</a></li>
@@ -29,43 +39,86 @@
     <main>
         <section class="hero">
             <div class="container">
-                <h2>Welcome to Kigali</h2>
-                <p>Explore the cleanest city in Africa, rich with culture, history, and vibrant experiences. From world-class restaurants to moving memorials, Kigali offers unforgettable experiences for every visitor.</p>
-                <img src="images/kigali-skyline.avif" alt="Kigali city skyline showing modern buildings" class="hero-image">
+                <div class="hero-layout">
+                    <div class="hero-copy">
+                        <p class="section-kicker">Plan an unforgettable city visit</p>
+                        <h2>Welcome to Kigali</h2>
+                        <p>Explore one of Africa's cleanest and most vibrant capitals, where modern architecture, creative spaces, exceptional dining, and places of remembrance sit across the hills of the city.</p>
+                        <div class="hero-actions">
+                            <a href="#destinations" class="btn">Explore Destinations</a>
+                            <a href="#facts" class="btn btn-secondary">Quick Facts</a>
+                        </div>
+                        <div class="hero-highlights">
+                            <div class="highlight-item">
+                                <strong>4</strong>
+                                <span>featured stops</span>
+                            </div>
+                            <div class="highlight-item">
+                                <strong>Year-round</strong>
+                                <span>pleasant climate</span>
+                            </div>
+                            <div class="highlight-item">
+                                <strong>Culture + History</strong>
+                                <span>in one city break</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-visual">
+                        <img src="images/kigali-skyline.avif" alt="Kigali city skyline showing modern buildings" class="hero-image">
+                        <div class="hero-badge">
+                            <span class="badge-label">Travel mood</span>
+                            <strong>Clean, calm, creative</strong>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="destinations">
+        <section class="destinations" id="destinations">
             <div class="container">
                 <h2>Top Destinations to Explore</h2>
-                
+                <p class="section-intro">Start with Kigali's iconic landmarks, arts spaces, and standout dining experiences.</p>
+
                 <div class="destination-grid">
                     <article class="destination-card">
                         <img src="images/kcc.jpg" alt="Kigali Convention Centre modern architecture">
-                        <h3>Kigali Convention Centre</h3>
-                        <p>A stunning architectural masterpiece hosting international events and offering panoramic city views.</p>
-                        <a href="destination1.html" class="btn">Learn More</a>
+                        <div class="card-content">
+                            <p class="card-tag">Landmark</p>
+                            <h3>Kigali Convention Centre</h3>
+                            <p>A striking architectural icon that hosts major events and offers panoramic city views.</p>
+                            <a href="destination1.html" class="btn">Learn More</a>
+                        </div>
                     </article>
 
                     <article class="destination-card">
                         <img src="images/inema gallery.webp" alt="Colorful art gallery at Inema Arts Center">
-                        <h3>Inema Arts Center</h3>
-                        <p>Rwanda's leading contemporary art gallery showcasing local and international artists.</p>
-                        <a href="destination2.html" class="btn">Learn More</a>
+                        <div class="card-content">
+                            <p class="card-tag">Creative Hub</p>
+                            <h3>Inema Arts Center</h3>
+                            <p>Rwanda's leading contemporary art space with bold exhibitions and local creative energy.</p>
+                            <a href="destination2.html" class="btn">Learn More</a>
+                        </div>
                     </article>
 
                     <article class="destination-card">
                         <img src="images/heaven.jfif" alt="Heaven Restaurant outdoor dining area">
-                        <h3>Heaven Restaurant</h3>
-                        <p>Exceptional dining with a mission - delicious food that supports local youth training programs.</p>
-                        <a href="destination3.html" class="btn">Learn More</a>
+                        <div class="card-content">
+                            <p class="card-tag">Dining</p>
+                            <h3>Heaven Restaurant</h3>
+                            <p>Exceptional dining with a mission, pairing memorable meals with local youth training support.</p>
+                            <a href="destination3.html" class="btn">Learn More</a>
+                        </div>
                     </article>
 
                     <article class="destination-card">
                         <img src="images/memorial site.jfif" alt="Kigali Genocide Memorial gardens">
-                        <h3>Genocide Memorial</h3>
-                        <p>A powerful tribute to the victims of the 1994 genocide, offering education and reflection.</p>
-                        <a href="destination4.html" class="btn">Learn More</a>
+                        <div class="card-content">
+                            <p class="card-tag">Reflection</p>
+                            <h3>Genocide Memorial</h3>
+                            <p>A powerful place of remembrance, learning, and reflection on Rwanda's history.</p>
+                            <a href="destination4.html" class="btn">Learn More</a>
+                        </div>
                     </article>
                 </div>
             </div>
@@ -74,37 +127,57 @@
         <section class="why-visit">
             <div class="container">
                 <h2>Why Visit Kigali?</h2>
+                <p class="section-intro">The city balances comfort, creativity, and depth, making it ideal for first-time and returning visitors.</p>
                 <div class="features">
                     <div class="feature">
-                        <h3>🏙️ Modern Infrastructure</h3>
+                        <span class="feature-icon" aria-hidden="true">01</span>
+                        <h3>Modern Infrastructure</h3>
                         <p>Experience Africa's most organized and clean capital city.</p>
                     </div>
                     <div class="feature">
-                        <h3>🎨 Rich Culture</h3>
+                        <span class="feature-icon" aria-hidden="true">02</span>
+                        <h3>Rich Culture</h3>
                         <p>Discover vibrant art scenes, traditional dance, and local crafts.</p>
                     </div>
                     <div class="feature">
-                        <h3>🍽️ Amazing Food</h3>
+                        <span class="feature-icon" aria-hidden="true">03</span>
+                        <h3>Amazing Food</h3>
                         <p>From local Rwandan cuisine to international flavors.</p>
                     </div>
                     <div class="feature">
-                        <h3>🌍 Safe & Welcoming</h3>
+                        <span class="feature-icon" aria-hidden="true">04</span>
+                        <h3>Safe and Welcoming</h3>
                         <p>One of Africa's safest cities with friendly, hospitable people.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="quick-facts">
+        <section class="quick-facts" id="facts">
             <div class="container">
                 <h2>Quick Facts About Kigali</h2>
-                <ul class="facts-list">
-                    <li>Population: Over 1.3 million people</li>
-                    <li>Language: Kinyarwanda, French, English, and Swahili</li>
-                    <li>Climate: Pleasant year-round with temperatures averaging 20-25°C</li>
-                    <li>Currency: Rwandan Franc (RWF)</li>
-                    <li>Known as: "The City of a Thousand Hills"</li>
-                </ul>
+                <div class="facts-grid">
+                    <article class="fact-card">
+                        <span class="fact-label">Population</span>
+                        <strong>1.3M+</strong>
+                        <p>People live across Kigali's growing urban districts.</p>
+                    </article>
+                    <article class="fact-card">
+                        <span class="fact-label">Languages</span>
+                        <strong>4 widely used</strong>
+                        <p>Kinyarwanda, French, English, and Swahili.</p>
+                    </article>
+                    <article class="fact-card">
+                        <span class="fact-label">Climate</span>
+                        <strong>20-25&deg;C</strong>
+                        <p>Pleasant temperatures for much of the year.</p>
+                    </article>
+                    <article class="fact-card">
+                        <span class="fact-label">Currency</span>
+                        <strong>RWF</strong>
+                        <p>The Rwandan Franc is used throughout the city.</p>
+                    </article>
+                </div>
             </div>
         </section>
 
@@ -112,7 +185,7 @@
             <div class="container">
                 <h2>Useful Resources</h2>
                 <p>Planning your trip? Check out these helpful external resources:</p>
-                <ul>
+                <ul class="resource-list">
                     <li><a href="https://www.visitrwanda.com/" target="_blank" rel="noopener">Visit Rwanda Official Tourism</a></li>
                     <li><a href="https://www.tripadvisor.com/Tourism-g293829-Kigali_Kigali_Province-Vacations.html" target="_blank" rel="noopener">TripAdvisor Kigali Guide</a></li>
                     <li><a href="https://www.lonelyplanet.com/rwanda/kigali" target="_blank" rel="noopener">Lonely Planet Kigali</a></li>
@@ -127,5 +200,17 @@
             <p>Created for HTML/CSS Web Development Course</p>
         </div>
     </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                const isOpen = navMenu.classList.toggle('is-open');
+                menuToggle.setAttribute('aria-expanded', String(isOpen));
+            });
+        }
+    </script>
 </body>
 </html>
